@@ -1,0 +1,16 @@
+#!/bin/bash
+
+path="$(pwd)/src/typedefs"
+
+echo $path
+
+if [ ! -d "$path" ]; then
+  mkdir -p "$path"
+fi
+
+grpc_tools_node_protoc \
+  --ts_out=./src/typedefs \
+  --plugin=node_modules/grpc_tools_node_protoc_ts/bin/protoc-gen-ts \
+  --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` \
+  --proto_path=./proto ./proto/*.proto
+

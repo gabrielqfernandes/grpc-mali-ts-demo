@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package users;
+
+service UserService {
+    rpc createUser(CreateUserRequest) returns (CreateUserReply) {}
+    rpc retrieveUser(RetrieveUserRequest) returns (RetrieveUserReply) {}
+}
+
+message RetrieveUserRequest {
+    int32 id = 1;
+}
+
+message UserRecord {
+    int32 id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string username = 4;
+    optional string phoneNumber = 6;
+    string createdAt = 7;
+    string updatedAt = 8;
+}
+
+message ErrorMessage {
+    string message = 2;
+    int32 code = 3;
+}
+
+message RetrieveUserReply {
+    bool success = 1;
+    oneof data {
+        UserRecord user = 2;
+        ErrorMessage error = 3;
+    }
+}
+
+message CreateUserRequest {
+    string firstName = 1;
+    string lastName = 2;
+    string username = 3;
+    string password = 4;
+    optional string phoneNumber= 5;
+}
+
+message CreateUserReply {
+    bool success = 1;
+    int32 user_id = 2;
+}
