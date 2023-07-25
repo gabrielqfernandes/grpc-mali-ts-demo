@@ -14,7 +14,7 @@ const users: any = {
     id: 2002,
     firstName: 'Gabriel',
     lastName: 'Fernandes',
-    username: 'gabrielfernandes-dev',
+    username: 'gabrielfernanzo',
     phoneNumber: '<missing>',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
